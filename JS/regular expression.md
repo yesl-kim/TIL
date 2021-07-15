@@ -1,13 +1,15 @@
-> [poiemaweb | 5.26 정규표현식](https://poiemaweb.com/js-regexp) > [zvon | Regular Expression Tutorial](http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents)
+> [poiemaweb | 5.26 정규표현식](https://poiemaweb.com/js-regexp)  
+> [zvon | Regular Expression Tutorial](http://zvon.org/comp/r/tut-Regexp.html#Pages~Contents)  
+> [MDN | 정규표현식을 사용하는 메소드 6개](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split)
 
-## 1. 정규표현식 소개
+## 정규표현식 개념
 
 ![정규표현식 리터럴](https://poiemaweb.com/img/regular_expression.png)
 정규표현식은 문자열을 처리하는 방법 중 하나로, 문자열에서 특정 내용을 찾거나 대체 또는 발췌하는데 사용한다.
 반복문이나 조건문으로 표현해야하는 복잡한 연산도 정규표현식을 사용하면 보다 간단하게 표현할 수 있다.
 정규표현식은 리터럴 표기법으로 생성할 수 있으며 리터럴 표기법의 형식은 위의 그림과 같다.
 
-### 1-1. 플래그
+### 플래그
 
 플래그는 정규표현식을 어떻게 검색할 것인지를 지정하는 옵션사항이다.
 플래그를 지정하지 않을 경우 타깃 문자열 내에서 검색하려는 문자는 대소문자를 구분하여 검색하게 되며,
@@ -31,7 +33,7 @@ regExp = /is/ig
 targetStr.match(regExp) //  (3) ["Is", "is", "is"]
 ```
 
-### 1-2. 패턴
+### 패턴
 
 패턴에는 검색하고 싶은 문자열을 지정한다.
 
@@ -86,14 +88,12 @@ passedStrs1;
 
 ---
 
-## 2. 정규표현식과 자바스크립트
-
-### 2-1. 생성방식
+## JS에서 정규식 생성방식
 
 리터럴 표기법과 생성자, 두가지 방식을 통해 정규표현식 객체를 만들 수 있다.
 
-> var regExp = /pattern/flags // 리터럴
-> var regExp = new RegExp( pattern[, flags]) // 생성자
+> var regExp = /pattern/flags
+> var regExp = new RegExp( pattern[, flags])
 
 ```javascript
 // 정규식 리터럴
@@ -104,14 +104,15 @@ new RegExp(/ab+c/, "i");
 new RegExp(/ab+c/i); // ES6
 ```
 
-### 2-2. 정규표현식을 사용하는 메소드
+---
 
-`RegExp.exec`, `RegExp.test`, `String.match`, `String.replace`, `String.search`, `String.split`
+## 정규표현식을 사용하는 자바스크립트 메소드
 
-#### 1) RegExp.exec(target: string): RegExpExecArray | null
+### RegExp.exec()
 
-문자열을 검색하여 첫 번째 매칭 결과를 반환한다. 반환값은 배열 또는 null이다.
-**g 플래그를 지정하여도 첫번째 매칭 결과만 반환한다.**
+> RegExp.exec( target : string ) : RegExpExecArray | null
+
+정규식에 매칭되는 문자열을 반환하며 **전역 플래그(`g`)를 지정하여도 첫번째 매칭 대상만 반환한다.**
 
 ```javascript
 const target = "Is this all there is?";
@@ -122,9 +123,11 @@ regExp1.exec(target); // ['is', index: 5, ...]
 regExp2.exec(target); // ['is', index: 5, ...]
 ```
 
-#### 2) RegExp.test(target: string): boolean
+### RegExp.test()
 
-문자열을 검색하여 해당 문자열이 포함되어 있으면 true를, 포함되어 있지 않으면 false를 반환한다.
+> RegExp.test( target : string ) : boolean
+
+문자열을 검색하여 일치하는 부분이 있으면 `true`, 없으면 `false`를 반환한다.
 
 ```javascript
 const target = "Is this all there is?";
@@ -133,10 +136,11 @@ const regExp = /is/;
 regExp.test(target); // true
 ```
 
-#### 3) String.match(regExp): Array | null
+### String.match()
 
-정규식에 매칭되는 문자열을 배열 형태로 반환한다. 매칭되는 문자열이 없을 경우 null을 반환한다.
-정규식에 전역 플래그(`g`)가 포함된 경우, 모든 매칭 결과를 배열로 반환한다.
+> String.match( regExp ) : Array | null
+
+정규식에 매칭되는 문자열을 배열에 담아 반환한다. 전역 플래그를 사용하면 일치되는 모든 항목을 반환한다.
 
 전역 플래그를 포함하지 않았을 경우, 특정 문자열을 캡쳐할 수 있는데 캡쳐된 문자열은 `groups` 속성의 객체 형태로 저장된다.
 캡쳐할 문자열은 `(?<name>캡쳐할 문자열)`형태로 지정할 수 있다.
@@ -156,15 +160,21 @@ input: 'The sheep sleeps, and the dog barks'
 */
 ```
 
-#### 4) String.replace(regExp: regExp | string, newSubstr: string): string
+### String.replace()
+
+> String.replace( regExp : regExp | string, newSubstr : string) : string
 
 매칭되는 문자열을 주어진 문자열로 교체한다.
 
-#### 5) String.search(regExp)
+### String.search()
+
+> String.search( regExp )
 
 매칭되는 문자열이 있는지 검사한다. 있을 경우 첫 번째 매칭 대상의 위치값(인덱스)을, 없을 경우 -1을 반환한다.
 
-#### 6) String.split([separator: string | regExp[, limit: number]]): Array
+### String.split()
+
+> String.split( [separator : string | regExp[, limit : number]] ) : Array
 
 매칭되는 문자열(separator)을 기준으로 현재 문자열을 분할한다.
 
@@ -172,6 +182,8 @@ input: 'The sheep sleeps, and the dog barks'
   반환되는 배열에 포함시킬 항목의 개수를 제한할 수 있다.
   음이 아닌 정수로 전달한다.
 
----
+## 정규표현식 관련 유용한 사이트
 
-## 3. .test()와 전역 플래그
+[regexp.com](https://regexr.com/) 작성한 정규표현식의 매칭 결과를 실시간으로 확인해볼 수 있다.
+[regexper.com](https://regexper.com/) 작성한 정규표현식을 시각화하여 보여준다.
+[regular-expressions.info](http://www.regular-expressions.info/) 정규표현식 자습서. (영문이라 보기 어렵지만 가끔 꺼내보자)
