@@ -44,3 +44,22 @@ git push origin master
    ```
 5. 원격 저장소에 올리기: `git push origin _브랜치명_`
 6. PR 남기기
+
+## 브랜치 삭제
+
+---
+
+- 하나의 브랜치 삭제
+
+```
+git branch -d <branch name>
+
+// 브랜치 강제 삭제
+git branch -D <branch name>
+```
+
+- 모든 브랜치 삭제
+
+```
+git branch | grep -v '^*' | xargs git branch -d
+```
