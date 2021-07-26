@@ -55,7 +55,7 @@ const right = (
 
 > 재사용 가능한 ui 단위
 
-- **컴포넌트 정의 : `function` vs `class`**
+- **컴포넌트 정의 : `function` vs `class`**  
   컴포넌트를 정의하는 데는 함수를 사용하는 것과 `class`를 사용하는 것, 두가지 방법이 있다.
   `class`로 컴포넌트를 정의할 때는 꼭 `render()` 함수가 필요하고, 그 안에서 화면에 그려줄 부분을 return한다.
 
@@ -73,7 +73,7 @@ class Welcome extends React.Component {
 }
 ```
 
-- **컴포넌트의 속성값 가져오기 : `props`**
+- **컴포넌트의 속성값 가져오기 : `props`**  
   컴포넌트의 속성값은 `컴포넌트.props`에 객체형태 `{ 속성명: 속성값 }`로 저장된다. 함수로 컴포넌트를 정의할 때 `props`를 매개변수로 전달하고 `props.속성명` 형태로 속성값에 접근할 수 있다.
 
 ```js
@@ -92,7 +92,7 @@ const element = <Welcome name="Sara" />;
 ReactDOM.render(element, document.getElementById("root"));
 ```
 
-- **컴포넌트 내에서 데이터 제어하기 : `state`**
+- **컴포넌트 내에서 데이터 제어하기 : `state`**  
   `props`는 컴포넌트를 사용하는 부모태그에서 그 값을 받아와 사용하지만 `state`는 온전히 컴포넌트 내에서 관리하고 제어하기 때문에 재사용성을 높일 수 있고, 보다 비공개적인 정보를 담을 때 사용한다.
 
 ---
