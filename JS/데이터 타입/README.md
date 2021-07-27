@@ -121,7 +121,7 @@ var b = a; // 변수 복사
   -> 정보형의 객체에만 사용권장
 
 ```js
-function(targetObj) {
-  return JSON.parse(JSON.stringify(targetObj))
+function copyObj(targetObj) {
+  return JSON.parse(JSON.stringify(targetObj));
 }
 ```
