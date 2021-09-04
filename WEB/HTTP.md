@@ -5,7 +5,8 @@
 > [제로초 블로그 | HTTP 메소드](https://www.zerocho.com/category/HTTP/post/5b3723477b58fc001b8f6385)
 
 - [ ] HTTP GET 캐싱
-- [ ] POST 데이터 길이 제한, 있다? 없다?
+- [ ] POST 데이터 길이 제한, 있다? 없다?  
+      https://knight76.tistory.com/entry/30021323262
 
 ---
 
