@@ -1,6 +1,7 @@
 # 프로토타입
 
 > 정재남, 코어 자바스크립트, 위키북스
+> [제로초 | 객체 지향 프로그래밍 (생성자와 프로토타입)](https://www.zerocho.com/category/JavaScript/post/573c2acf91575c17008ad2fc)
 
 자바스크립트는 프로토타입 기반 언어이다.
 

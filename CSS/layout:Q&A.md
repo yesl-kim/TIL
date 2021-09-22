@@ -44,5 +44,6 @@ sticky는 부모요소의 영역 안에서만 고정된 위치값을 갖는 것�
 ## position : sticky
 
 - 하나의 위치값은 반드시 가져야 한다. (top, left, right, bottom)
+- 위치값은 fixed처럼 동작 -> 브라우저 화면 기준 위치값
 - 조상 요소 중에 overflow : hidden이 설정되어 있으면 무시된다. (= poition: static 처럼 동작한다.)
 - 높이값이 부모요소의 높이값보다 작아야한다. (추가)

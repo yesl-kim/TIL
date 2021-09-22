@@ -33,6 +33,10 @@
 
 > 반면, 나눈 컴포넌트를 코드로 작성할 때는 작은 것부터 구현하는 것이 많이 추천된다.
 
+## Tips
+
+[디자인-시스템을-만들때-마주하는-고민사항-23가지와-32개-팁](https://medium.com/lemonade-engineering/%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%84-%EB%A7%8C%EB%93%A4%EB%95%8C-%EB%A7%88%EC%A3%BC%ED%95%98%EB%8A%94-%EA%B3%A0%EB%AF%BC%EC%82%AC%ED%95%AD-23%EA%B0%80%EC%A7%80%EC%99%80-32%EA%B0%9C-%ED%8C%81-cabc58670421)
+
 ## Reference
 
 [TOAST UI | 리액트 어플리케이션 구조 - 아토믹 디자인](https://ui.toast.com/weekly-pick/ko_20200213)
