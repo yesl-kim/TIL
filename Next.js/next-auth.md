@@ -1,5 +1,7 @@
 # next-auth 공식문서 야곰야곰 파악하기
 
+이 모든 글은 jwt 인증방식을 사용한다는 가정 하에 작성!
+
 ## options
 
 ### session
@@ -37,7 +39,24 @@ jwt: (params: {
 ```
 
 - jwt가 생성될 때 (로그인시) + 변경될 때 (session에 접근할 때)마다 호출된다. _(jwt 인증방식을 사용한다는 가정하에 (`{strategy: 'jwt'}`))_
-- **반환값(token)은 쿠키에 저장된다**
+- **반환값을 token이라 간주하며 쿠키에 저장된다** (=반환값이 곧 jwt가 된다)
+- 이렇게 쿠키에 저장된 **token은 getToken 메소드**를 통해 얻을 수 있다
+
+  ```ts
+  export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+    // env 파일에서 NEXTAUTH_SECRET 변수를 사용하면 secret 인자 생략가능
+    // const token = await getToken({ req, secret })
+    const token = await getToken({ req })
+    // ...
+  }
+
+  export default async function handler(req, res) {
+    const token = await getToken({ req })
+    console.log('JSON Web Token', token)
+    res.end()
+  }
+  ```
+
 - 처음 로그인하고 호출되는 jwt callback에서만 user, account, profile, isNewUser 인자를 사용할 수 있다.
 - 로그인시 서버 응답값이 user 인자로 들어온다. (이 때 token은 없다)
 - user, account, profile, isNewUser 값은 로그인사는 형태(provider)와 데이터베이스 사용유무에 따라 다 다르다!
@@ -85,6 +104,29 @@ session: (params: { session: Session; user: User | AdapterUser; token: JWT }) =>
 - 하지만 credential로 로그인시 전달되지 않는다.
 
 > callback 순서는 꼭 jwt > session 순!
+
+## 내장 API
+
+### getCsrfToken
+
+앞서, next auth에서 발행한 token은 **쿠키**에 저장된다고 했다
+next의 server를 사용하면 token이 알아서 보내지기도 하고,
+getToken을 통해 쉽게 token에 접근할 수도 있다. (알아서 decode, encode도 해줌!)
+
+쿠키는 서버 통신시 자동으로 보내지니 아주 편리하지만,
+반대로 자동으로 보내져서 보안에 위험하기도 하다 (CSRF 공격!)
+
+그렇다면 getCsrfToken 메소드는 뭘까
+
+## protect page
+
+방법으로는
+
+1. next auth middleware 사용
+   - config 객체를 통해 보호할 페이지를 설정해주면 next auth가 알아서 해줌
+   - jwt 인증방식을 사용할 때만 가능
+2. getServerSession 메소드 사용
+   - 보호할 모든 페이지의 getServerSideProps 메소드 안에서 getServerSession 메소드를 통해 session을 넘겨주면 보호가 된단다.. 🧐
 
 ## silent refresh
 
