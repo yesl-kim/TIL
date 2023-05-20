@@ -147,3 +147,35 @@ getToken을 통해 쉽게 token에 접근할 수도 있다. (알아서 decode, e
 ## 참고글
 
 - [next-auth 공식문서](https://next-auth.js.org/)
+
+## 메모
+
+그래서 내가 뭘했고
+뭘 해야 하는지
+중간에 발생한, 잊지 말고 해결해야할 이슈는 뭔지
+
+- [ ] issue: 회원가입하지 않고 로그인을 하려는 사용자의 에러처리
+      소셜로그인시 profile 콜백함수에서 token을 받아오기 때문에
+      소셜회원가입을 하지 않고 소셜 로그인을 하는 등
+      profile 함수 내에서 에러가 발생하면 에러 핸들링이 어려움
+      에러가 클라이언트까지 오지 않고 서버에서 그대로 에러가 반환되기 때문에
+- 대안 1.
+  [loginType, userId, password] 가 unique하게 두고
+  회원가입/로그인시 해당 데이터를 upsert하고 로그인시킴
+  => 회원가입을 진행하지 않고 로그인할 경우 자동 회원가입이 되어버림 (이게 맞나?)
+- 대안 2. 회원가입, 로그인은 분리하되 앞 단에서 에러핸들링할 수 있는 방법을 찾는다.
+  => **signin 콜백이 바로 그런 용도이다**
+  > Use the signIn() callback to control if a user is allowed to sign in.
+  - signin 콜백 안에서 false를 리턴하면 앞단에서 에러로 감지된다
+  - 설정한 에러페이지로 이동하며, 에러 메세지는 'AccessDenied'
+- [ ] issue: 그 외의 에러처리
+      그 외의 발생할 수 있는 에러는 없을까?
+      우선 에러 발생시 특정 페이지 (커스텀 페이지)로 이동시킬 수는 있다
+      그리고 그 페이지에서 error 파라미터를 전달받을 수 있다 (`?error=<errorcode>`)
+  ```ts
+  //[...nextauth].ts
+  pages: {
+    error: '/auth/error'
+  }
+  ```
+- [ ] access token 확인하는 로직 수정 필요 (role에 따라서)

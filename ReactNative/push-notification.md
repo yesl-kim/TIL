@@ -76,25 +76,42 @@ q. 로컬 푸시알림을 위해서 react native push notification 라이브러�
 할 일 목록
 
 - [x] 푸시 알림 스케줄러 개발: **쿠폰 유효기간 만료 전 30일, 15일, 7일**
-  - [ ] 알림 시간은? !확인 필요!
-  - [ ] fcm token 업데이트 시점 확인
-  - [ ] fcm token을 userInfo 와 연결
+  - [x] 알림 시간은? !확인 필요!
+  - [x] fcm token 업데이트 시점 확인
+  - [ ] ~~fcm token을 userInfo 와 연결~~
 - [ ] 푸시 알림 시 배지 (ios)
+- [x] 알림 클릭시 이동하는 페이지 설정을 세밀하게 하기 위해 전송 데이터 포맷이 수정되어야할 것 같다.
+  - [x] 전역스토어에서는 다음 페이지 이름만 저장하고 있다. 파라미터도 저장할 수 있도록 수정
+  - [x] 푸시알림 클릭 시 페이지 이동하는지 확인 (파이어베이스 어드민, 일반 알림 전송, 주제 알림 전송, 스케줄러)
 
-|            | ios |                    android                     |
-| :--------: | :-: | :--------------------------------------------: |
-| foreground | ✅  | ❌ onMessage에는 찍히는데 알림함에 추가가 안됨 |
-| background | ✅  |          🔺 알림 o, 알림함 x, 진동 x           |
-|    quit    | ✅  |          🔺 알림 o, 알림함 x, 진동 x           |
+|            | ios |           android           |
+| :--------: | :-: | :-------------------------: |
+| foreground | ✅  |             ✅              |
+| background | ✅  |             ✅              |
+|    quit    | ✅  | 🔺 알림 o, 알림함 x, 진동 x |
 
-=> 안드로이드에서 onMessage에는 찍히는데 알림함에 추가가 안됨
+=> ~~안드로이드에서 onMessage에는 찍히는데 알림함에 추가가 안됨~~ (리덕스 상에서 중복 공지를 막기 위한 조건문이 원인)
+=> App component 밖, index.js 에서 setBackgroundHandler 를 지정해주어야함
+
+- 알림함 내용은 전역 스토어로 관리되고 있음
+- index에서는 전역 스토어 사용불가
+
+알림함 관련 기능
+
+- [x] 알림 추가
+- [x] 알림 읽기
+- [x] 알림 모두 읽기
+- [x] 알림 삭제 (90일 이전의 알림 자동 삭제)
+- [x] 안 읽은 알림 있는지 확인
 
 ## 참고
 
-- [ ] [react native 푸시알림 공식문서 따라하기 - 한 번 훑어보기 좋음. 전반적인 이해에 도움](https://velog.io/@kwonh/ReactNative-%ED%91%B8%EC%89%AC%EC%95%8C%EB%A6%BC-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0-Firebase-Cloud-Messaging-react-native-firebase-notification-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C)
-- [ ] [혜지니 블로그 | [Android] FCM을 이용해 push 구현하기 - 안드로이드 native 코드만 있어서 키 발급 과정만 참고하면 좋음](https://maejing.tistory.com/entry/Android-FCM%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4-Push-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
-- [ ] [꿀팀저장소 블로그 | ReactNative, 푸시 알림 완벽하게 구현하기](https://honeystorage.tistory.com/306)
-- [ ] [react native firebase 공식문서 | device token 발급방법](https://rnfirebase.io/messaging/server-integration#device-tokens)
+- [react native firebase 공식문서 | 초기세팅 및 remote notification 송수신](https://rnfirebase.io/messaging/usage)
+- [react native firebase 공식문서 | 앱에서 알림 보여주기](https://rnfirebase.io/messaging/notifications)
+- [react native 푸시알림 공식문서 따라하기 - 한 번 훑어보기 좋음. 전반적인 이해에 도움](https://velog.io/@kwonh/ReactNative-%ED%91%B8%EC%89%AC%EC%95%8C%EB%A6%BC-%EA%B3%B5%EC%8B%9D%EB%AC%B8%EC%84%9C-%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0-Firebase-Cloud-Messaging-react-native-firebase-notification-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C)
+- [혜지니 블로그 | [Android] FCM을 이용해 push 구현하기 - 안드로이드 native 코드만 있어서 키 발급 과정만 참고하면 좋음](https://maejing.tistory.com/entry/Android-FCM%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%B4-Push-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+- [꿀팀저장소 블로그 | ReactNative, 푸시 알림 완벽하게 구현하기](https://honeystorage.tistory.com/306)
+- [react native firebase 공식문서 | device token 발급방법](https://rnfirebase.io/messaging/server-integration#device-tokens)
 
 ---
 
@@ -128,3 +145,19 @@ react-native-push-notification 라이브러리가 가장 자료가 많기는 한
 - [onesignal 공식문서](https://github.com/OneSignal/react-native-onesignal)
 - [LogRocket | Implement push notifications in React Native with OneSignal](https://blog.logrocket.com/implement-push-notifications-react-native-onesignal/)
 - [medium | OneSignal 리엑트네이티브 sdk 설치 방법 및 간단한 사용법](https://medium.com/crossplatformkorea/onesignal-%EB%A6%AC%EC%97%91%ED%8A%B8%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-sdk-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95-%EB%B0%8F-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%82%AC%EC%9A%A9%EB%B2%95-6a7fd1058ee7)
+
+---
+
+react-native-firebase 라이브러리는 remote message를 보낼 때 사용된다.
+공식문서에는 해당 라이브러리를 통해 알림이 가는 경우를 이렇게 정리해놓았다.
+[image]
+ㅓ어
+=> 띵동! 하고 울리는 기기 알림은 앱이 켜진 상태에서 가지 울리지 않는다
+=> 앱이 켜진 상태에서도 알림이 가길 원한다면
+
+- 앱이 켜진 상태에서 알림 이벤트를 감지하여 (.onMessage)
+- local notification을 한 번 더 수신하는 것으로 구현할 수 있다.
+- local notification 구현을 위해 추천하는 라이브러리로는 [notifee](https://notifee.app/) 가 있고,
+- 파이어베이스의 in-app-messaging도 비슷한 역할을 하는 것 같다만, 어느정도 한계가 있는 것 같다.
+
+  > FCM provides support for displaying basic notifications to users with minimal integration required. If however you require more advanced notifications we recommend using our separate local notifications package 'Notifee'.
