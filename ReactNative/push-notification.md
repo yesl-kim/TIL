@@ -161,3 +161,14 @@ react-native-firebase 라이브러리는 remote message를 보낼 때 사용된�
 - 파이어베이스의 in-app-messaging도 비슷한 역할을 하는 것 같다만, 어느정도 한계가 있는 것 같다.
 
   > FCM provides support for displaying basic notifications to users with minimal integration required. If however you require more advanced notifications we recommend using our separate local notifications package 'Notifee'.
+
+---
+
+지금은 푸시 알림 객체의 data 필드를 통해 알림 클릭시 이동할 화면 전달
+-> 알림 클릭시
+-> 푸시 알림 수신 이벤트 핸들러는 navigator 밖에 존재하기 때문에 navigationRef로 화면 이동
+or 전역 스토어에 다음 화면 정보 저장 -> 핀로그인 이후 해당 화면으로 이동
+
+그런데 react native navigation 공식문서에는 push notification이 이유라면 navigation ref가 아닌 다른 방법을 권하고 있었다.
+그게 바로 link.
+external link 혹은 react native deep link를 사용하는 것
