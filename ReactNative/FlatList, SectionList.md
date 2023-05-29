@@ -27,3 +27,13 @@ other props
 - `ListFooterComponent`  
   list의 가장 하단에 위치하는 컴포넌트  
   페이지네이션이 렌더되기 전 로딩 아이콘 혹은 로딩 컴포넌트를 넣는 것이 대표적이다.
+
+## type of styled FlatList with emotion
+
+```jsx
+const StyledFlatList = styled(FlatList<string>)`
+  ...
+`
+```
+
+- [참고글 | emotion 이슈 - Styling FlatList changes its type (#2888)](https://github.com/emotion-js/emotion/issues/2888)
