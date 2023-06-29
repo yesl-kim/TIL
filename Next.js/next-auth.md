@@ -179,3 +179,11 @@ getToken을 통해 쉽게 token에 접근할 수도 있다. (알아서 decode, e
   }
   ```
 - [ ] access token 확인하는 로직 수정 필요 (role에 따라서)
+
+---
+
+how to refresh jwt
+
+- https://dev.to/mabaranowski/nextjs-authentication-jwt-refresh-token-rotation-with-nextauthjs-5696
+- https://github.com/nextauthjs/next-auth/discussions/4229
+- https://next-auth.js.org/tutorials/securing-pages-and-api-routes#server-side
