@@ -13,17 +13,15 @@
 - Number
 - Symbol (new in ES6)
 
----
-
 ## 요약
 
-- 자바스크립트의 데이터 타입은 기본형과 참조형으로 나눌 수 있다.
+- 자바스크립트의 데이터 타입은 기본형(원시 타입)과 참조형(참조 타입)으로 나눌 수 있다.
 
-- 기본형은 원시타입의 값, 즉 number, string, boolean, null, undefined, 그리고 ES6에 추가된 symbol이 있다.
+- 기본형(원시타입)에는 number, string, boolean, null, undefined, 그리고 ES6에 추가된 symbol이 있다.
 
-- 참조형은 object, array, function 등이다.
+- 참조형에는 객체 타입이 있으며 object, array, function 등이 여기에 해당된다. (배열, 함수도 결국 모두 객체)
 
-- 기본형은 불변형이며, 참조형은 가변형이다.
+- 기본형 데이터는 불변성, 참조형 데이터는 가변성
 
 - 불변성을 말할 때의 '불변'이란 변수에 재할당의 가능여부를 말하는 것이 아니다(변경 가능성 x)
 
@@ -36,8 +34,6 @@
 - null값의 타입은 객체이다.
 
 - null과 undefined의 비교는 ===로 비교한다.
-
----
 
 ## Intro
 

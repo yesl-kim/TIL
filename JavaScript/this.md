@@ -1,6 +1,11 @@
 # this
 
-> [poiemaweb | 5.17 this](https://poiemaweb.com/js-this) > [poiemaweb | 6.3 Arrow function](https://poiemaweb.com/es6-arrow-function) > [MDN | 화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions)  
+> [poiemaweb | 5.17 this](https://poiemaweb.com/js-this)
+>
+> [poiemaweb | 6.3 Arrow function](https://poiemaweb.com/es6-arrow-function)
+>
+> [MDN | 화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+>
 > 정재남, 코어자바스크립트, 위키북스
 
 ## 일반 함수의 this

@@ -1,6 +1,10 @@
 # this : Q&A
 
-> [노마드 코더 | 바닐라 JS로 그림판 만들기](https://nomadcoders.co/) > [poiemaweb | 5.17 this](https://poiemaweb.com/js-this) > [poiemaweb | 6.3 Arrow function](https://poiemaweb.com/es6-arrow-function)
+> [노마드 코더 | 바닐라 JS로 그림판 만들기](https://nomadcoders.co/)
+>
+> [poiemaweb | 5.17 this](https://poiemaweb.com/js-this)
+>
+> [poiemaweb | 6.3 Arrow function](https://poiemaweb.com/es6-arrow-function)
 
 ## 1. 상황
 
