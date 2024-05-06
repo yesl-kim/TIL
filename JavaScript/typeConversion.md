@@ -341,7 +341,7 @@ console.log(obj2 + ""); // "true"    — hint is "default"
 - hint 값을 통해 형 변환시의 값을 지정할 수 있다.
 - 반드시 원시값을 반환해야한다. (그렇지 않으면 에러 발생)
 
-1. toString, valueOf 메소드 지정
+#### 2. toString, valueOf 메소드 지정
 
 ```js
 const obj3 = {
@@ -358,7 +358,3 @@ console.log(obj3 + ""); // '3'
 - 일반적인 (위의 메소드를 오버라이딩하지 않은) 객체의 valueOf는 객체 자신을 반환한다 -> 무시됨
 - 그렇기 때문에 숫자형으로 평가되는 연산에도 toString 메소드가 호출된다 ('[object Object]')
 - ~~그래서 toString만 지정해도 충분~~
-
-## 주의사항
-
--

@@ -61,6 +61,5 @@ a === b; // true
 NEXT?
 
 - [ ] 객체 복사 방법 - https://dassur.ma/things/deep-copy/
-- [ ] vdom 에 대해서
 - [ ] observer pattern
 - [ ]
